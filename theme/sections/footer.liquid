@@ -1,0 +1,67 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 56px;">
+      <div class="site-header__wordmark" style="color: var(--color-text); font-size: 28px;">{{ section.settings.wordmark | default: 'PalmaYard' }}</div>
+      <div class="site-header__tagline" style="color: var(--color-text);">{{ section.settings.tagline | default: 'Inspired Outdoor Living' }}</div>
+    </div>
+
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <p class="site-footer__brand-text">{{ section.settings.brand_text | default: 'Exclusive access to products, offers and inspiration' }}</p>
+        {%- form 'customer', class: 'site-footer__newsletter' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <label for="footer-email" class="visually-hidden">{{ 'general.newsletter.label' | t }}</label>
+          <input id="footer-email" type="email" name="contact[email]" placeholder="{{ 'general.newsletter.placeholder' | t }}" required>
+          <button type="submit" aria-label="{{ 'general.newsletter.submit' | t }}">&rsaquo;</button>
+        {%- endform -%}
+      </div>
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'menu' -%}
+          <div>
+            <h4>{{ block.settings.title }}</h4>
+            <ul>
+              {%- assign links = block.settings.links | newline_to_br | split: '<br />' -%}
+              {%- for line in links -%}
+                {%- assign parts = line | strip | split: '|' -%}
+                {%- if parts[0] != blank -%}
+                  <li><a href="{{ parts[1] | default: '#' | strip }}">{{ parts[0] | strip }}</a></li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="site-footer__copy">© {{ 'now' | date: '%Y' }} {{ shop.name }}, Inc. {{ 'layout.footer.rights' | t }}</div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "text", "id": "wordmark", "label": "Wordmark", "default": "PalmaYard" },
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "Inspired Outdoor Living" },
+    { "type": "text", "id": "brand_text", "label": "Brand text", "default": "Exclusive access to products, offers and inspiration" }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu column",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "links", "label": "Links (one per line, format: Label|URL)" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "menu", "settings": { "title": "Company", "links": "About|#\nCollections|#\nInspiration|#\nContact|#\nPrivacy Policy|#\nTerms of Service|#" } },
+      { "type": "menu", "settings": { "title": "Shop", "links": "Pergolas|#\nGazebos|#\nOutdoor Kitchens|#\nPatio Furniture|#\nUmbrellas & Bases|#\nStorage & Sheds|#\nCovers & Accessories|#\nHeaters|#" } },
+      { "type": "menu", "settings": { "title": "Social", "links": "Instagram|#\nFacebook|#\nLinkedIn|#" } }
+    ]
+  }
+}
+{% endschema %}

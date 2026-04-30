@@ -1,0 +1,23 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Skip to content",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "newsletter": {
+      "label": "Email",
+      "placeholder": "Email",
+      "submit": "Subscribe",
+      "success": "Thanks for subscribing"
+    }
+  },
+  "layout": {
+    "navigation": { "menu": "Menu" },
+    "cart": { "title": "Cart" },
+    "footer": { "rights": "All Rights Reserved" }
+  },
+  "sections": {
+    "header": { "announcement": "" }
+  }
+}

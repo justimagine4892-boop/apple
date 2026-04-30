@@ -1,0 +1,14 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Shopify CLI
+.shopifyignore
+.shopify/
+
+# Editors
+.vscode/
+.idea/
+
+# Local design source (kept in zip in repo root)
+design/raw/

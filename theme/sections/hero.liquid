@@ -1,0 +1,27 @@
+{%- liquid
+  assign img = section.settings.image
+  assign img_url = 'hero.png' | asset_url
+  if img != blank
+    assign img_url = img | image_url: width: 2400
+  endif
+-%}
+
+<section class="hero" aria-label="Hero">
+  <img class="hero__img" src="{{ img_url }}" alt="{{ section.settings.alt | default: 'Build a backyard you will actually live in' | escape }}">
+</section>
+
+<style>
+  .hero { display: block; position: relative; overflow: hidden; background: var(--color-bg-dark); }
+  .hero__img { width: 100%; height: auto; display: block; }
+</style>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Hero image" },
+    { "type": "text", "id": "alt", "label": "Image alt text", "default": "Build a backyard you will actually live in" }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}

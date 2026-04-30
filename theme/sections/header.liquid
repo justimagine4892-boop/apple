@@ -1,0 +1,65 @@
+<header class="site-header" role="banner">
+  <div class="container site-header__inner">
+    <nav class="site-header__nav site-header__nav--left" aria-label="Primary">
+      <button class="site-header__menu-toggle" type="button" aria-label="Open menu">
+        <span class="site-header__menu-icon" aria-hidden="true"></span>
+        <span>{{ section.settings.menu_label | default: 'Shop' }}</span>
+      </button>
+      {%- for link in section.blocks -%}
+        {%- if link.type == 'link_left' -%}
+          <a href="{{ link.settings.url | default: '#' }}">{{ link.settings.label }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+
+    <a href="{{ routes.root_url }}" class="site-header__logo" aria-label="{{ shop.name }}">
+      <div class="site-header__wordmark">{{ section.settings.wordmark | default: 'PalmaYard' }}</div>
+      <div class="site-header__tagline">{{ section.settings.tagline | default: 'Inspired Outdoor Living' }}</div>
+    </a>
+
+    <nav class="site-header__nav site-header__nav--right" aria-label="Secondary">
+      {%- for link in section.blocks -%}
+        {%- if link.type == 'link_right' -%}
+          <a href="{{ link.settings.url | default: '#' }}">{{ link.settings.label }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+      <a href="{{ routes.cart_url }}">Cart{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}</a>
+    </nav>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "text", "id": "wordmark", "label": "Wordmark", "default": "PalmaYard" },
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "Inspired Outdoor Living" },
+    { "type": "text", "id": "menu_label", "label": "Menu label", "default": "Shop" }
+  ],
+  "blocks": [
+    {
+      "type": "link_left",
+      "name": "Left link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "url", "id": "url", "label": "URL" }
+      ]
+    },
+    {
+      "type": "link_right",
+      "name": "Right link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label" },
+        { "type": "url", "id": "url", "label": "URL" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "link_left", "settings": { "label": "Collections", "url": "#" } },
+      { "type": "link_left", "settings": { "label": "Inspiration", "url": "#" } },
+      { "type": "link_right", "settings": { "label": "About", "url": "#" } }
+    ]
+  }
+}
+{% endschema %}

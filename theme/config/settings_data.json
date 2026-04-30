@@ -1,0 +1,16 @@
+{
+  "current": {
+    "color_text": "#2A3334",
+    "color_bg": "#FFFFFF",
+    "color_bg_dark": "#0F1316",
+    "color_bg_cream": "#F4EFE8",
+    "color_accent": "#B5805C",
+    "color_cta": "#0F5560",
+    "font_heading": "'DM Sans', system-ui, sans-serif",
+    "font_body": "'DM Sans', system-ui, sans-serif",
+    "font_wordmark": "'Cormorant Garamond', Georgia, serif"
+  },
+  "presets": {
+    "Default": {}
+  }
+}

@@ -1,0 +1,42 @@
+{%- liquid
+  assign img = section.settings.image
+  assign asset_name = section.settings.asset_filename
+  assign img_url = ''
+  if img != blank
+    assign img_url = img | image_url: width: 2400
+  elsif asset_name != blank
+    assign img_url = asset_name | asset_url
+  endif
+
+  assign max_w = section.settings.max_width | default: 1200
+  assign top = section.settings.padding_top | default: 80
+  assign bottom = section.settings.padding_bottom | default: 80
+  assign bg = section.settings.bg | default: 'transparent'
+-%}
+
+{%- if img_url != '' -%}
+  <section
+    class="image-section"
+    style="background: {{ bg }}; padding: {{ top }}px 24px {{ bottom }}px;"
+    aria-label="{{ section.settings.alt | escape }}">
+    <div style="max-width: {{ max_w }}px; margin: 0 auto;">
+      <img class="image-section__img" src="{{ img_url }}" alt="{{ section.settings.alt | escape }}" loading="lazy">
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Image strip",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "asset_filename", "label": "Asset filename (fallback)", "info": "Use a filename in /assets/ if no image is uploaded." },
+    { "type": "text", "id": "alt", "label": "Alt text", "default": "" },
+    { "type": "number", "id": "max_width", "label": "Max width (px)", "default": 1200 },
+    { "type": "number", "id": "padding_top", "label": "Padding top (px)", "default": 80 },
+    { "type": "number", "id": "padding_bottom", "label": "Padding bottom (px)", "default": 80 },
+    { "type": "color_background", "id": "bg", "label": "Background", "default": "transparent" }
+  ],
+  "presets": [{ "name": "Image strip" }]
+}
+{% endschema %}

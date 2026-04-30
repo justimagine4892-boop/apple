@@ -1,0 +1,77 @@
+<section class="collection-grid-section" aria-labelledby="collection-grid-heading">
+  <div class="container">
+    <div class="section-heading">
+      <h2 id="collection-grid-heading">{{ section.settings.title | default: 'Discover Our Collections' }}</h2>
+      <div class="eyebrow">{{ section.settings.eyebrow | default: 'Made to Breathe' }}</div>
+    </div>
+
+    <div class="collection-grid">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign img = block.settings.image
+          assign asset_name = block.settings.asset_filename
+          assign img_url = ''
+          if img != blank
+            assign img_url = img | image_url: width: 1200
+          elsif asset_name != blank
+            assign img_url = asset_name | asset_url
+          endif
+        -%}
+        <a class="collection-tile" href="{{ block.settings.url | default: '#' }}" {{ block.shopify_attributes }}>
+          {%- if img_url != '' -%}
+            <img src="{{ img_url }}" alt="{{ block.settings.alt | escape }}" loading="lazy">
+          {%- endif -%}
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .collection-grid-section { padding: 80px 0 40px; }
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .collection-tile { display: block; overflow: hidden; }
+  .collection-tile img { width: 100%; height: auto; transition: transform .4s ease; }
+  .collection-tile:hover img { transform: scale(1.02); }
+  @media (max-width: 700px) {
+    .collection-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Collection grid",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Discover Our Collections" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Made to Breathe" }
+  ],
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tile",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "asset_filename", "label": "Asset filename (fallback)" },
+        { "type": "text", "id": "alt", "label": "Alt text" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Collection grid",
+      "blocks": [
+        { "type": "tile", "settings": { "asset_filename": "collection-1-outdoor-dining.png", "alt": "Outdoor Dining" } },
+        { "type": "tile", "settings": { "asset_filename": "collection-2-garden-lounger.png", "alt": "Garden Lounger" } },
+        { "type": "tile", "settings": { "asset_filename": "collection-3-grill-entertaining.png", "alt": "Grill & Entertaining" } },
+        { "type": "tile", "settings": { "asset_filename": "collection-4-poolside-retreat.png", "alt": "Poolside Retreat" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

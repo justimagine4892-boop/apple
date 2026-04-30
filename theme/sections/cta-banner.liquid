@@ -1,0 +1,32 @@
+{%- liquid
+  assign img = section.settings.image
+  assign img_url = 'cta-banner.png' | asset_url
+  if img != blank
+    assign img_url = img | image_url: width: 2400
+  endif
+-%}
+
+<section class="cta-banner" style="background-image: url('{{ img_url }}');" aria-label="Call to action">
+  <div class="cta-banner__inner">
+    <h2 class="cta-banner__title">{{ section.settings.title | default: 'Beautiful outdoor living starts with a space designed to be used every day' }}</h2>
+    <div class="cta-banner__buttons">
+      <a class="btn btn--light" href="{{ section.settings.cta1_url | default: '#' }}">{{ section.settings.cta1_label | default: 'Shop Pergolas' }}</a>
+      <a class="btn btn--primary" href="{{ section.settings.cta2_url | default: '#' }}">{{ section.settings.cta2_label | default: 'Start a Custom Project' }}</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CTA banner",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Background image" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Beautiful outdoor living starts with a space designed to be used every day" },
+    { "type": "text", "id": "cta1_label", "label": "Button 1 label", "default": "Shop Pergolas" },
+    { "type": "url", "id": "cta1_url", "label": "Button 1 URL" },
+    { "type": "text", "id": "cta2_label", "label": "Button 2 label", "default": "Start a Custom Project" },
+    { "type": "url", "id": "cta2_url", "label": "Button 2 URL" }
+  ],
+  "presets": [{ "name": "CTA banner" }]
+}
+{% endschema %}
