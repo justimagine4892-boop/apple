@@ -1,0 +1,156 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "alt": "Build a backyard you will actually live in"
+      }
+    },
+    "collections-grid": {
+      "type": "collection-grid",
+      "settings": {
+        "title": "Discover Our Collections",
+        "eyebrow": "Made to Breathe"
+      },
+      "blocks": {
+        "t1": { "type": "tile", "settings": { "asset_filename": "collection-1-outdoor-dining.png", "alt": "Outdoor Dining" } },
+        "t2": { "type": "tile", "settings": { "asset_filename": "collection-2-garden-lounger.png", "alt": "Garden Lounger" } },
+        "t3": { "type": "tile", "settings": { "asset_filename": "collection-3-grill-entertaining.png", "alt": "Grill & Entertaining" } },
+        "t4": { "type": "tile", "settings": { "asset_filename": "collection-4-poolside-retreat.png", "alt": "Poolside Retreat" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"]
+    },
+    "feature-real-outdoor": {
+      "type": "image-strip",
+      "settings": {
+        "asset_filename": "feature-real-outdoor-living.png",
+        "alt": "Designed for Real Outdoor Living",
+        "max_width": 9999,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "bg": "#0F1316"
+      }
+    },
+    "build-pergola-1": {
+      "type": "image-strip",
+      "settings": {
+        "asset_filename": "build-pergola-1-kitchen.png",
+        "alt": "Pergola 2.0 + Outdoor Kitchen",
+        "max_width": 1200,
+        "padding_top": 64,
+        "padding_bottom": 24
+      }
+    },
+    "build-pergola-2": {
+      "type": "image-strip",
+      "settings": {
+        "asset_filename": "build-pergola-2-dining.png",
+        "alt": "Pergola 2.0 + Dining",
+        "max_width": 1200,
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "build-pergola-3": {
+      "type": "image-strip",
+      "settings": {
+        "asset_filename": "build-pergola-3-lounge.png",
+        "alt": "Pergola 2.0 + Lounge Seating",
+        "max_width": 1200,
+        "padding_top": 24,
+        "padding_bottom": 64
+      }
+    },
+    "custom-pergola": {
+      "type": "image-strip",
+      "settings": {
+        "asset_filename": "custom-pergola-features.png",
+        "alt": "Custom Pergola features",
+        "max_width": 1200,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "explore-products": {
+      "type": "image-strip",
+      "settings": {
+        "asset_filename": "explore-products.png",
+        "alt": "Explore our products",
+        "max_width": 1200,
+        "padding_top": 40,
+        "padding_bottom": 80
+      }
+    },
+    "triangular-pergola": {
+      "type": "image-strip",
+      "settings": {
+        "asset_filename": "triangular-pergola.png",
+        "alt": "The Triangular Pergola",
+        "max_width": 1200,
+        "padding_top": 0,
+        "padding_bottom": 80
+      }
+    },
+    "why-palmayard": {
+      "type": "image-strip",
+      "settings": {
+        "asset_filename": "why-palmayard.png",
+        "alt": "Why PalmaYard",
+        "max_width": 1100,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "inspired-gallery": {
+      "type": "image-strip",
+      "settings": {
+        "asset_filename": "inspired-gallery.png",
+        "alt": "Inspired Outdoor Living",
+        "max_width": 9999,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "bg": "#0F1316"
+      }
+    },
+    "testimonial": {
+      "type": "image-strip",
+      "settings": {
+        "asset_filename": "testimonial.png",
+        "alt": "Our clients say it best",
+        "max_width": 1200,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "helper-tiles": {
+      "type": "image-strip",
+      "settings": {
+        "asset_filename": "helper-tiles.png",
+        "alt": "Not sure what fits your space?",
+        "max_width": 1200,
+        "padding_top": 60,
+        "padding_bottom": 80
+      }
+    },
+    "cta-banner": {
+      "type": "cta-banner",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "collections-grid",
+    "feature-real-outdoor",
+    "build-pergola-1",
+    "build-pergola-2",
+    "build-pergola-3",
+    "custom-pergola",
+    "explore-products",
+    "triangular-pergola",
+    "why-palmayard",
+    "inspired-gallery",
+    "testimonial",
+    "helper-tiles",
+    "cta-banner"
+  ]
+}
