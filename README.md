@@ -6,16 +6,26 @@ Custom Shopify theme replicating the PalmaYard homepage from Figma.
 
 ## Run locally
 
+### Option A — quick visual preview (no Shopify needed)
+
 ```bash
-# 1. Install Shopify CLI: https://shopify.dev/docs/themes/tools/cli/install
-# 2. From the repo root:
+npm install
+npm run dev
+```
+
+Then open **http://localhost:3000**. This is a static HTML mirror of the homepage that uses the same CSS and assets as the Shopify theme — perfect for reviewing the UI in a browser.
+
+### Option B — full Shopify theme dev server
+
+```bash
+# Install Shopify CLI: https://shopify.dev/docs/themes/tools/cli/install
 cd theme
 shopify theme dev --store=YOUR-STORE.myshopify.com
 ```
 
-This serves the theme against your dev store with hot reload. The home URL will preview the homepage you saw in Figma.
+This serves the theme against your dev store with hot reload, real cart, real product data, etc.
 
-To preview without a store, you can also drop the `theme/` folder directly via Online Store → Themes → Add theme → Upload zip.
+You can also drop the `theme/` folder directly via **Online Store → Themes → Add theme → Upload zip**.
 
 ## Layout
 
