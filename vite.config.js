@@ -3,6 +3,7 @@
 // resolve to the same files the Shopify theme serves.
 
 export default {
+  base: './',
   publicDir: 'theme/assets',
   server: {
     host: true,

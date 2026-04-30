@@ -15,7 +15,16 @@ npm run dev
 
 Then open **http://localhost:3000**. This is a static HTML mirror of the homepage that uses the same CSS and assets as the Shopify theme — perfect for reviewing the UI in a browser.
 
-### Option B — full Shopify theme dev server
+### Option B — public URL via GitHub Pages
+
+A workflow at `.github/workflows/pages.yml` builds and deploys the preview on every push.
+
+**One-time setup (in GitHub):**
+1. Repo → **Settings** → **Pages**
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**
+3. Push to the branch — the workflow runs and prints the live URL in the Actions tab (typically `https://justimagine4892-boop.github.io/apple/`)
+
+### Option C — full Shopify theme dev server
 
 ```bash
 # Install Shopify CLI: https://shopify.dev/docs/themes/tools/cli/install
